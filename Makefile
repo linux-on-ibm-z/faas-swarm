@@ -42,3 +42,11 @@ ci-arm64-build:
 .PHONY: ci-arm64-push
 ci-arm64-push:
 	docker push openfaas/faas-swarm:$(TAG)-arm64
+
+.PHONY: ci-s390x-build
+ci-s390x-build:
+	docker build --build-arg http_proxy="${http_proxy}" --build-arg https_proxy="${https_proxy}" -t openfaas/faas-swarm:$(TAG)-s390x . -f Dockerfile.s390x
+
+.PHONY: ci-s390x-push
+ci-s390x-push:
+	docker push openfaas/faas-swarm:$(TAG)-s390x
