@@ -1,7 +1,7 @@
 TAG?=latest-dev
 .PHONY: build
 build:
-	docker build --build-arg http_proxy="${http_proxy}" --build-arg https_proxy="${https_proxy}" -t openfaas/faas-swarm:$(TAG) .
+	docker build --build-arg http_proxy="${http_proxy}" --build-arg https_proxy="${https_proxy}" -t openfaas/faas-swarm:$(TAG)-s390x . -f Dockerfile.s390x
 
 .PHONY: test-unit
 test-unit:
@@ -25,7 +25,7 @@ push:
 	docker push openfaas/faas-swarm:$(TAG)
 
 .PHONY: all
-all: ci-s390x-build
+all: build
 
 .PHONY: ci-armhf-build
 ci-armhf-build:
