@@ -2,9 +2,9 @@ jobs:
   include:
   - os: linux
     addons:
-    apt:
-      packages:
-        - docker-ce
+      apt:
+        packages:
+          - docker-ce
   - os: linux
     arch: s390x
 
@@ -24,7 +24,7 @@ install:
 - if [ "$HOSTTYPE" == "s390x" ]; then curl -fsSL https://get.docker.com | bash; fi      
     
 script:
-    - make
+    - if [ "$HOSTTYPE" == "s390x" ]; then make ci-s390x-build; else make; fi
 
 after_success:
     - if [ -z $DOCKER_NS ] ; then
