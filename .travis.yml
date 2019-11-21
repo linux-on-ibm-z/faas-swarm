@@ -1,8 +1,7 @@
 jobs:
   include:
   - os: linux
-  - os: linux
-    arch: s390x
+  - os: linux-s390x
 
 branches:
   only:
