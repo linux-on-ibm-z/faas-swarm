@@ -1,6 +1,10 @@
 jobs:
   include:
   - os: linux
+    addons:
+    apt:
+      packages:
+        - docker-ce
   - os: linux
     arch: s390x
 
@@ -12,13 +16,12 @@ sudo: required
 
 services:
       - docker
-addons:
-  apt:
-    packages:
-      - docker-ce
 
 before_install:
     - ./contrib/ci.sh
+
+install:
+- if [ "$HOSTTYPE" == "s390x" ]; then curl -fsSL https://get.docker.com | bash; fi      
     
 script:
     - make
