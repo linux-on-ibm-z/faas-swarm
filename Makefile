@@ -25,7 +25,7 @@ push:
 	docker push openfaas/faas-swarm:$(TAG)
 
 .PHONY: all
-all: build
+all: ci-s390x-build
 
 .PHONY: ci-armhf-build
 ci-armhf-build:
